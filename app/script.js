@@ -5,7 +5,7 @@ class App extends React.Component {
 
   state = {
     status: 'off',
-    time: '00:05',
+    time: '5',
     timer: null,
   }
 
