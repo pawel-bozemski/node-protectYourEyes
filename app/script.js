@@ -18,6 +18,7 @@ class App extends React.Component {
   step = () => {
     this.setState({time: this.state.time - 1});
     if (this.state.time === 0) {
+      this.playBell();
       if (this.state.status === 'work') {
         this.setState({
           status: 'rest',
@@ -51,6 +52,11 @@ class App extends React.Component {
   closeApp = () => {
     window.close();
   }
+
+  playBell = () => {
+    const bell = new Audio('./sounds/bell.wav');
+    bell.play();
+  };
 
 
   render() {
