@@ -5,7 +5,7 @@ class App extends React.Component {
 
   state = {
     status: 'off',
-    time: '5',
+    time: 5,
     timer: null,
   }
 
@@ -15,7 +15,24 @@ class App extends React.Component {
     return min.padStart(2,'0') + ':' + sec.padStart(2,'0');
   }
 
-  step = () => {};
+  step = () => {
+    this.setState({time: this.state.time - 1});
+
+    if (this.state.time === 0) {
+      if (this.state.status === 'work') {
+        this.setState({
+          status: 'rest',
+          time: 20,
+        })
+      } else if (this.state.status === 'rest') {
+        this.setState({
+          status: 'work',
+          time: 1200,
+        })
+      }
+    }
+
+  };
 
   startTimer = () => {
 
